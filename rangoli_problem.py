@@ -48,13 +48,27 @@ j-i-h-g-f-e-d-c-b-a-b-c-d-e-f-g-h-i-j
 """
 
 
+def insert_row(size: int, row: int, rangoli: list) -> str:
+    sides = (2 * size - 2 - 2 * row) * "-"
+    left = "-".join(rangoli[:row + 1])
+    right = "-".join(rangoli[0:row][::-1])
+    if right:
+        center = left + "-" + right
+    else:
+        center = left
+    return f"{sides}{center}{sides}"
+
+
 def print_rangoli(size: int) -> None:
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
-    rows = 2 * size - 1
-    cols = 4 * size - 3
-    for row in range(rows):
-        for col in range(cols):
-            ...
+    alphabet = "a b c d e f g h i j k l m n o p q r s t u v w x y z".split()
+    rangoli = alphabet[:size]
+    rangoli.sort(reverse=True)
+    # upper rangoli part
+    for row in range(size):
+        print(insert_row(size=size, row=row, rangoli=rangoli))
+    # down rangoli part
+    for row in range(size - 2, -1, -1):
+        print(insert_row(size=size, row=row, rangoli=rangoli))
 
 
 if __name__ == '__main__':
