@@ -51,10 +51,10 @@ Harry
 """
 
 import operator
-from typing import List
+from typing import List, Tuple
 
 
-def solve(records: List[List[str | float]]) -> List[str]:
+def solve(records: List[Tuple[str, float]]) -> List[str]:
     """
     :param records: a list of lists with names and grades
     :return: a list of student names having the second-lowest grade ordered by name
@@ -72,6 +72,6 @@ if __name__ == '__main__':
     for _ in range(int(input())):
         name = input()
         score = float(input())
-        records_.append([name, score])
+        records_.append((name, score))
 
     print("\n".join(solve(records=records_)))
